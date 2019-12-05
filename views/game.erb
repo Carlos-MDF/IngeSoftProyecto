@@ -1,44 +1,80 @@
 <head>
-<h1>Empecemos a jugar!</h1>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-</head>
+<!doctype html>
+<html lang="en">
+  <head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.11/css/mdb.min.css" rel="stylesheet">
+    <title>Dash&Dot</title>
+  </head>
+  <body>
+      <div class="container text-center ">
+            <h1 id="tit"><strong>Vamos a jugar!</strong></h1>
+            <form method='post' action='/position'>
+                <h3>Primero Ingrese la base y la altura del area de juego del robot</h3>
+                <div class="form-group">
+                    <label for="altura">Altura</label>
+                    <input type = 'text' class="form-control" id="altura" name='altura' placeholder="Ingrese la altura">
+                </div>
+                <div class="form-group">
+                    <label for="base">Base</label>
+                    <input type = 'text' class="form-control" id="base" name='base' placeholder="Ingrese la base">
+                </div>
+                <hr>
+                <h3 >Ingrese la posicion inicial de su robot en coordenadas X, Y</h3>
+                <div class="form-group">
+                <label for="coordenadaX">Coordenada X</label>
+                    <input type = 'text' class="form-control" id="coordenadaX" name='coordenadaX' placeholder="Ingrese posicion en X">
+                </div>
+                <div class="form-group">
+                <label for="coordenadaY">Coordenada Y</label>
+                    <input type = 'text' class="form-control" id="coordenadaY" name='coordenadaY' placeholder="Ingrese posicion en Y">
+                </div>
+                <hr>
+                <h4 >Para mover a su robot de la posicion inicial ingrese A para moverlo adelante, I para moverlo a la izquierda, D para moverlo a la derecha</h4>
+                <div class="form-group">
+                <label for="movimiento">Movimiento</label>
+                    <input type = 'text' class="form-control" id="movimiento" name='movimiento' placeholder="Ingrese el movimiento a realizarse">
+                </div>
+                <input type='submit' class="btn btn-primary" value='Enviar'>
+            </div>
+      </div>
+    <!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.11/js/mdb.min.js"></script>
+  </body>
+</html>
 
-<body>
-<form method='post' action='/position'>
-    <p class="font-weight-lighter">Primero ingrese la base y la altura del area de juego de su robot</p>
-    <div class="form-group">
-        <label for="altura">Altura</label>
-        <input type = 'text' class="form-control" id="altura" name='altura' placeholder="Ingrese la altura">
-    </div>
-    <div class="form-group">
-        <label for="base">Base</label>
-        <input type = 'text' class="form-control" id="base" name='base' placeholder="Ingrese la base">
-    </div>
-    <hr>
-    <p class="font-weight-lighter">Ingrese la posicion inicial de su robot en coordenadas X, Y</p>
-    <div class="form-group">
-    <label for="coordenadaX">Coordenada X</label>
-        <input type = 'text' class="form-control" id="coordenadaX" name='coordenadaX' placeholder="Ingrese posicion en X">
-    </div>
-    <div class="form-group">
-    <label for="coordenadaY">Coordenada Y</label>
-        <input type = 'text' class="form-control" id="coordenadaY" name='coordenadaY' placeholder="Ingrese posicion en Y">
-    </div>
-    <hr>
-    <p class="font-weight-lighter">Para mover a su robot de la posicion inicial ingrese A para moverlo adelante, I para moverlo a la izquierda, D para moverlo a la derecha</p>
-    <div class="form-group">
-    <label for="movimiento">Movimiento</label>
-        <input type = 'text' class="form-control" id="movimiento" name='movimiento' placeholder="Ingrese el movimiento a realizarse">
-    </div>
-    <input type='submit' class="btn btn-primary" value='Enviar'>
-</form>
+<style>
+body{
+    background: #74ebd5;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #ACB6E5, #74ebd5);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #ACB6E5, #74ebd5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
+}
+#tit{
+    padding-top: 3%;
 
-
-
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-</body>
-
-
+}
+#cuerp{
+    padding-top: 5%;
+}
+#but{
+    padding-top: 5%;
+}
+#img{
+    width: 340px;
+    height: 300px;
+}
+</style>

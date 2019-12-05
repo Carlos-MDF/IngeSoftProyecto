@@ -5,4 +5,4 @@ Feature:
 
     Scenario: Ver la pagina principal
     Given visito la pagina principal
-    Then deberia ver un mensaje "Bienvenido al juego"
+    Then deberia ver un mensaje "Bienvenido a Dash&Dot"
