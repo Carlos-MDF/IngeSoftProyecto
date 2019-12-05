@@ -7,12 +7,20 @@ Given("visito la pagina de juego") do
     visit '/game'
 end
 
+Given("ingreso la base {string} en el campo {string}") do |valorBase, campoBase|
+    fill_in(campoBase, :with => valorBase)
+end
+  
+Given("ingreso la altura {string} en el campo {string}") do |valorAltura, campoAltura|
+    fill_in(campoAltura, :with => valorAltura)
+end
+
 #When
-When("ingreso la coordenada {string} en el campo {string}") do |valorX, campoX|
+When("ingreso la coordenada en X a {string} en el campo {string}") do |valorX, campoX|
     fill_in(campoX, :with => valorX)
 end
   
-When("ingreso la coordenada {string}  en el campo {string}") do |valorY, campoY|
+When("ingreso la coordenada en Y a {string} en el campo {string}") do |valorY, campoY|
     fill_in(campoY, :with => valorY)
 end
   
