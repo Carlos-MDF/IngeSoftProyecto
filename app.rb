@@ -10,12 +10,16 @@ get '/game' do
 end
 
 post '/position' do
-    coordenadas = Coordenadas.new
+    @coordenadas = Coordenadas.new
     @x = params[:coordenadaX]
     @y = params[:coordenadaY]
     @base = params[:base]
     @altura = params[:altura]
-    @coor = coordenadas.generarCoordenadas(@x, @y)
-    @area = coordenadas.calcularArea(@base, @altura)
+    @coor = @coordenadas.cordIni(@x, @y)
+    @area = @coordenadas.area(@base, @altura)
+    @mov = params[:movimiento]
+    @movimiento = @coordenadas.mover(@mov)
+    @dentro = @coordenadas.estaDentro()
     erb :position
 end
+

@@ -15,6 +15,10 @@ Given("ingreso la altura {string} en el campo {string}") do |valorAltura, campoA
     fill_in(campoAltura, :with => valorAltura)
 end
 
+Given("ingreso el movimiento {string} en el campo {string}") do |valorMov, campoMov|
+    fill_in(campoMov, :with => valorMov)
+end
+
 #When
 When("ingreso la coordenada en X a {string} en el campo {string}") do |valorX, campoX|
     fill_in(campoX, :with => valorX)
@@ -34,6 +38,10 @@ end
 
 Then("deberia ver un mensaje {string}") do |bienvenida|
     last_response.body.should =~ /#{bienvenida}/m
+end
+
+Then("deberia mostrarse {string}") do |jugada|
+    last_response.body.should =~ /#{jugada}/m
 end
 
 
