@@ -6,6 +6,19 @@ class Coordenadas
     @Yi
     @Xf
     @Yf
+    $cardinales = ['N','E','S','O']
+    @mirada
+    
+    def limit (mir)
+        if ( mir == 4 )
+            mir = 0
+        end
+        if ( mir == -1)
+            mir = 3
+        end
+        return mir
+    end
+
     def area (b,a)
         @al = a.to_i
         @ba = b.to_i
@@ -13,46 +26,53 @@ class Coordenadas
         return @ar.to_s
     end
     
-    def cordIni(x, y)
+    def cordIni(x, y,o)
         @Xi = x.to_i
-        @Yi = y.to_i  
-        return @Xi.to_s , @Yi.to_s
+        @Yi = y.to_i
+        @Xf = @Xi
+        @Yf = @Yi
+        for i in (0..3)
+            if($cardinales[i] == o)
+                @mirada = i
+            end
+        end
+        return @Xi.to_s , @Yi.to_s, $cardinales[@mirada]
     end
 
-    def estaDentro()
-        base = Math.sin(@ba / 2)
-        altura = Math.sin(@al / 2)
-        x = @Xf
-        y = @Yf 
-        if(@Xf < 0)
-            x = -(@Xf)
-        end
-        if(@Yf < 0)
-            y = -(@Yf)
-        end
-        if (x <= base.ceil && y <= altura.ceil)
-            "Dentro"
+    def estaDentro() 
+        if (@Xf >= 0 && @Xf < @ba-1  && @Yf >= 0 && @Yf  < @al-1)
+            resp = "Dentro"
         else
-            "Fuera"
+            resp = "Fuera"
         end
+        return resp
     end
 
-    def mover(m)
-        x = @Xi
-        y = @Yi
+    def cambiarOrientacion(m)
+        if ( m == 'I' )
+            @mirada = @mirada -1
+        end
+        if ( m == 'D')
+            @mirada = @mirada + 1
+        end
+        @mirada = limit(@mirada)  
+    end
+    def mover (m)
+        cambiarOrientacion(m)
         if(m == 'A')
-            @Xf = x 
-            @Yf = y + 1
-        elsif ( m == 'I')
-            @Xf = x - 1
-            @Yf = y
-        elsif ( m == 'D')
-            @Xf = x + 1
-            @Yf = y
-        else
-            @Xf = x 
-            @Yf = y 
+            if( $cardinales[@mirada] == 'N')
+                @Xf = @Xf -1
+            end
+            if( $cardinales[@mirada] == 'S')
+                @Xf = @Xf + 1
+            end
+            if( $cardinales[@mirada] == 'E')
+                @Yf = @Yf +1
+            end
+            if( $cardinales[@mirada] == 'O')
+                @Yf = @Yf -1
+            end
         end
-        return @Xf.to_s , @Yf.to_s  
+        return @Xf.to_s,@Yf.to_s,$cardinales[@mirada]
     end
 end
