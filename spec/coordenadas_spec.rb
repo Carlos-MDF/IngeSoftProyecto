@@ -6,9 +6,17 @@ RSpec.describe Coordenadas do
         coordenadas = Coordenadas.new
         expect(coordenadas.area('5','5')).to eq('25')
     end
+    it 'Si el jugador ingresa la base -5 y la altura 5 le devuelve Numeros Invalidos' do
+        coordenadas = Coordenadas.new
+        expect(coordenadas.area('-5','5')).to eq('Numeros Invalidos')
+    end
     it 'Si el jugador ingresa posicion X=0, posicion Y=0 y la orientacion, le devuelve el array [0,0,N]' do
         coordenadas = Coordenadas.new
         expect(coordenadas.cordIni('0','0','N')).to eq(['0','0','N'])
+    end
+    it 'Si el jugador ingresa posicion X=-1, posicion Y=0 y la orientacion, le devuelve Numeros Invalidos' do
+        coordenadas = Coordenadas.new
+        expect(coordenadas.cordIni('-1','0','N')).to eq('Numeros Invalidos')
     end
     it 'Si el jugador ingresa las coordenadas iniciales 1 en X ,1 en Y y orientacion N con el movimeinto A le devuelve el array [0,1]' do
         coordenadas = Coordenadas.new
@@ -53,5 +61,17 @@ RSpec.describe Coordenadas do
         coordenadas.cordIni('0','0','N')
         coordenadas.mover('A')
         expect(coordenadas.estaDentro()).to eq("Fuera")
+    end
+    it 'Si el jugador ingresa una base de 5, una altura de 4 ,las coordenadas iniciales 2 en X ,0 en Y y orientacion N con los movimientos DAIIDA devuelve [1,1,N]' do
+        coordenadas = Coordenadas.new
+        coordenadas.area('5','4')
+        coordenadas.cordIni('2','0','N')
+        expect(coordenadas.variasMovidas('DAIIDA')).to eq(['1','1','N'])
+    end
+    it 'Si el jugador ingresa una base de 5, una altura de 4 ,las coordenadas iniciales 0 en X ,0 en Y y orientacion E con los movimientos ADADAA devuelve Salio de la pista' do
+        coordenadas = Coordenadas.new
+        coordenadas.area('5','4')
+        coordenadas.cordIni('0','0','E')
+        expect(coordenadas.variasMovidas('ADADAA')).to eq("Salio de la pista")
     end
 end

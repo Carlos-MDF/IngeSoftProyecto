@@ -8,7 +8,7 @@ class Coordenadas
     @Yf
     $cardinales = ['N','E','S','O']
     @mirada
-    
+    @ordenes
     def limit (mir)
         if ( mir == 4 )
             mir = 0
@@ -20,6 +20,10 @@ class Coordenadas
     end
 
     def area (b,a)
+        if (b.to_i < 0 || a.to_i < 0)
+            return "Numeros Invalidos"
+        end
+        
         @al = a.to_i
         @ba = b.to_i
         @ar = @al * @ba
@@ -27,6 +31,9 @@ class Coordenadas
     end
     
     def cordIni(x, y,o)
+        if (x.to_i < 0 || y.to_i < 0)
+            return "Numeros Invalidos"
+        end
         @Xi = x.to_i
         @Yi = y.to_i
         @Xf = @Xi
@@ -75,4 +82,16 @@ class Coordenadas
         end
         return @Xf.to_s,@Yf.to_s,$cardinales[@mirada]
     end
+
+    def variasMovidas(orde)
+        @ordenes = orde
+        for i in (0 .. orde.length)
+           resp= mover(orde[i])
+           if(estaDentro() == "Fuera")
+            return "Salio de la pista"
+           end
+        end
+        return resp   
+    end
+
 end
