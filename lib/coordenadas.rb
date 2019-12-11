@@ -1,3 +1,7 @@
+require_relative './errors/invalid_dimension'
+require_relative './errors/invalid_position'
+require_relative './errors/invalid_move'
+
 class Coordenadas
     @al
     @ba
@@ -19,9 +23,9 @@ class Coordenadas
         return mir
     end
 
-    def area (b,a)
+    def area (b, a)
         if (b.to_i < 0 || a.to_i < 0)
-            return "Numeros Invalidos"
+            raise InvalidDimension.new
         end
         
         @al = a.to_i
@@ -32,7 +36,7 @@ class Coordenadas
     
     def cordIni(x, y,o)
         if (x.to_i < 0 || y.to_i < 0)
-            return "Numeros Invalidos"
+            raise InvalidPosition.new
         end
         @Xi = x.to_i
         @Yi = y.to_i
@@ -43,6 +47,7 @@ class Coordenadas
                 @mirada = i
             end
         end
+       
         return @Xi.to_s , @Yi.to_s, $cardinales[@mirada]
     end
 
@@ -88,7 +93,7 @@ class Coordenadas
         for i in (0 .. orde.length)
            resp= mover(orde[i])
            if(estaDentro() == "Fuera")
-            return "Salio de la pista"
+            raise InvalidMove.new
            end
         end
         return resp   

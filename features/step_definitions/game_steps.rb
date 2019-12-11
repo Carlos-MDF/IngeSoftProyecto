@@ -3,45 +3,52 @@ Given("visito la pagina principal") do
     visit '/'
 end
 
+Given("visito la pagina de dimension") do
+    visit '/dimension'
+end
+
 Given("visito la pagina de juego") do
     visit '/game'
 end
 
-Given("ingreso la base {string} en el campo {string}") do |valorBase, campoBase|
-    fill_in(campoBase, :with => valorBase)
-end
-  
-Given("ingreso la altura {string} en el campo {string}") do |valorAltura, campoAltura|
-    fill_in(campoAltura, :with => valorAltura)
-end
-
-Given("ingreso el movimiento {string} en el campo {string}") do |valorMov, campoMov|
-    fill_in(campoMov, :with => valorMov)
-end
-
-#When
-When("ingreso la coordenada en X a {string} en el campo {string}") do |valorX, campoX|
+Given("ingreso la coordenada en X a {string} en el campo {string}") do |valorX, campoX|
     fill_in(campoX, :with => valorX)
 end
   
-When("ingreso la coordenada en Y a {string} en el campo {string}") do |valorY, campoY|
+Given("ingreso la coordenada en Y a {string} en el campo {string}") do |valorY, campoY|
     fill_in(campoY, :with => valorY)
 end
   
+Given("ingreso la orientacion en {string} en el campo {string}") do |valorO, campoO|
+    fill_in(campoO, :with => valorO)
+end
+  
+Given("ingreso el largo {string} en el campo {string}") do |valorL, campoL|
+    fill_in(campoL, :with => valorL)
+end
+  
+Given("ingreso el ancho {string} en el campo {string}") do |valorA, campoA|
+    fill_in(campoA, :with => valorA)
+end
+
+Given("ingreso el movimiento {string} en el campo {string}") do |valorM, campoM|
+    fill_in(campoM, :with => valorM)
+end
+
+#When
 When("presiono el boton {string}") do |boton|
     click_button(boton)
 end
-#Then
-Then("deberia mostrarme {string}") do |coordenadas|
-    last_response.body.should =~ /#{coordenadas}/m
-end
 
+#Then
 Then("deberia ver un mensaje {string}") do |bienvenida|
     last_response.body.should =~ /#{bienvenida}/m
 end
 
-Then("deberia mostrarse {string}") do |jugada|
-    last_response.body.should =~ /#{jugada}/m
+Then("deberia mostrarme {string}") do |dimension|
+    last_response.body.should =~ /#{dimension}/m
 end
+
+
 
 

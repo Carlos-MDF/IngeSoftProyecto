@@ -16,18 +16,11 @@
   <body>
       <div class="container text-center ">
             <h1 id="tit"><strong>Vamos a jugar!</strong></h1>
+            <blockquote class="blockquote text-center">
+                <p class="mb-0">La dimension del campo de juego es de: <%=@dimension%>m2</p>
+            </blockquote>
             <form method='post' action='/position'>
-                <h3>Primero Ingrese la base y la altura del area de juego del robot</h3>
-                <div class="form-group">
-                    <label for="altura">Altura</label>
-                    <input type = 'text' class="form-control" id="altura" name='altura' placeholder="Ingrese la altura">
-                </div>
-                <div class="form-group">
-                    <label for="base">Base</label>
-                    <input type = 'text' class="form-control" id="base" name='base' placeholder="Ingrese la base">
-                </div>
-                <hr>
-                <h3 >Ingrese la posicion inicial de su robot en coordenadas X, Y</h3>
+                <h3 >Ingrese la posicion inicial de su robot en coordenadas (X, Y) y la orientacion N Norte, S Sur, E Este, O Oeste</h3>
                 <div class="form-group">
                 <label for="coordenadaX">Coordenada X</label>
                     <input type = 'text' class="form-control" id="coordenadaX" name='coordenadaX' placeholder="Ingrese posicion en X">
@@ -35,6 +28,10 @@
                 <div class="form-group">
                 <label for="coordenadaY">Coordenada Y</label>
                     <input type = 'text' class="form-control" id="coordenadaY" name='coordenadaY' placeholder="Ingrese posicion en Y">
+                </div>
+                 <div class="form-group">
+                <label for="orientacion">Orientacion</label>
+                    <input type = 'text' class="form-control" id="orientacion" name='orientacion' placeholder="Ingrese la orientacion">
                 </div>
                 <hr>
                 <h4 >Para mover a su robot de la posicion inicial ingrese A para moverlo adelante, I para moverlo a la izquierda, D para moverlo a la derecha</h4>
