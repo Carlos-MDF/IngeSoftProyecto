@@ -1,4 +1,4 @@
-require 'Coordenadas'
+require_relative './lib/coordenadas'
 require 'spec_helper'
 
 RSpec.describe Coordenadas do
