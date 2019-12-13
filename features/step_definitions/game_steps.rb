@@ -34,6 +34,10 @@ end
 Given("ingreso el movimiento {string} en el campo {string}") do |valorM, campoM|
     fill_in(campoM, :with => valorM)
 end
+  
+Given("ingreso {string} en el campo {string}") do |valor, campo|
+    fill_in(campo, :with => valor)
+  end
 
 #When
 When("presiono el boton {string}") do |boton|

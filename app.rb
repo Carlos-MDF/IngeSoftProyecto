@@ -25,7 +25,7 @@ end
 post '/saveDimension' do
     $altura = params[:largo]
     $base = params[:ancho]
-    puts $altura, $base
+    @dimension = $altura.to_i * $base.to_i
     if $altura.to_i < 0 || $base.to_i < 0
         erb :invalidDimension
     else
@@ -44,6 +44,7 @@ post '/position' do
          micoordenada.cordIni(@x, @y, @orientacion)
          micoordenada.variasMovidas(@mov)
          $coordenadasList.push(micoordenada)
+         $dimension = micoordenada
          erb :game
      rescue InvalidPosition
         erb :invalidPosition
@@ -55,11 +56,7 @@ post '/position' do
 end
 
 get '/finish' do
-    begin
-    rescue InvalidPosition
-        erb :invalidPosition
-    rescue InvalidMove
-        erb :invalidMove
+
     erb :position
-    end
+    
 end

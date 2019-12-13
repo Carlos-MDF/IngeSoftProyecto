@@ -71,6 +71,10 @@ class Coordenadas
         $cardinales[@mirada]
     end
 
+    def get_area
+        @ar.to_s
+    end
+
     def estaDentro()
          if (@Xf >= 0 && @Xf <= @ba  && @Yf >= 0 && @Yf  <= @al)
              resp = "Dentro"

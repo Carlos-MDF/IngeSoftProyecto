@@ -7,4 +7,5 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
 SimpleCov.start do
   add_filter ".bundle"
   add_filter "template_steps"
+  add_filter "lib/errors/invalid_dimension"
 end
