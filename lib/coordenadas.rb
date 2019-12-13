@@ -52,7 +52,7 @@ class Coordenadas
     end
 
     def estaDentro() 
-        if (@Xf >= 0 && @Xf < @ba-1  && @Yf >= 0 && @Yf  < @al-1)
+        if (@Xf >= 0 && @Xf <= @ba  && @Yf >= 0 && @Yf  <= @al)
             resp = "Dentro"
         else
             resp = "Fuera"
@@ -73,16 +73,16 @@ class Coordenadas
         cambiarOrientacion(m)
         if(m == 'A')
             if( $cardinales[@mirada] == 'N')
-                @Xf = @Xf -1
+                @Yf = @Yf + 1
             end
             if( $cardinales[@mirada] == 'S')
-                @Xf = @Xf + 1
+                @Yf = @Yf - 1
             end
             if( $cardinales[@mirada] == 'E')
-                @Yf = @Yf +1
+                @Xf = @Xf +1
             end
             if( $cardinales[@mirada] == 'O')
-                @Yf = @Yf -1
+                @Xf = @Xf -1
             end
         end
         return @Xf.to_s,@Yf.to_s,$cardinales[@mirada]
