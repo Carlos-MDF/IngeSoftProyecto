@@ -17,7 +17,7 @@
       <div class="container text-center ">
             <h1 id="tit"><strong>Vamos a jugar!</strong></h1>
             <blockquote class="blockquote text-center">
-                <p class="mb-0">La dimension del campo de juego es de: <%=@dimension%>m2</p>
+                <p class="mb-0">La dimension del campo de juego es de: <%=$dimension%>m2</p>
             </blockquote>
             <form method='post' action='/position'>
                 <h3 >Ingrese la posicion inicial de su robot en coordenadas (X, Y) y la orientacion N Norte, S Sur, E Este, O Oeste</h3>
@@ -39,8 +39,12 @@
                 <label for="movimiento">Movimiento</label>
                     <input type = 'text' class="form-control" id="movimiento" name='movimiento' placeholder="Ingrese el movimiento a realizarse">
                 </div>
-                <input type='submit' class="btn btn-primary" value='Enviar'>
-            </div>
+                <input type='submit' class="btn btn-primary" value='Agregar Auto'>
+            </form>
+            <form method='get' action='/finish'>
+                <input type='submit' class="btn btn-primary" value='Terminar'>
+            </form>
+        </div>
       </div>
     <!-- JQuery -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

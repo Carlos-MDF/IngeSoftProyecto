@@ -1,9 +1,13 @@
 require 'sinatra'
-require_relative "lib/coordenadas"
+require_relative "./lib/coordenadas"
 require_relative './lib/errors/invalid_dimension'
 require_relative './lib/errors/invalid_position'
 require_relative './lib/errors/invalid_move'
 
+$coordenadasList = []
+$base
+$altura
+$dimension
 $coordenadas = Coordenadas.new
 
 get	'/'	do
@@ -19,29 +23,43 @@ get '/dimension' do
 end
 
 post '/saveDimension' do
-    begin
-        @ancho = params[:ancho]
-        @largo = params[:largo]
-        @dimension = $coordenadas.area(@ancho, @largo)
-        erb :game
-    rescue InvalidDimension
+    $altura = params[:largo]
+    $base = params[:ancho]
+    puts $altura, $base
+    if $altura.to_i < 0 || $base.to_i < 0
         erb :invalidDimension
+    else
+        erb :game
     end
 end
 
 post '/position' do  
     begin
-        @x = params[:coordenadaX]
-        @y = params[:coordenadaY]
-        @orientacion = params[:orientacion]
-        @mov = params[:movimiento]
-        @coor = $coordenadas.cordIni(@x, @y, @orientacion)
-        @movimiento = $coordenadas.variasMovidas(@mov)
-        erb :position
+         @x = params[:coordenadaX]
+         @y = params[:coordenadaY]
+         @orientacion = params[:orientacion]
+         @mov = params[:movimiento]
+         micoordenada = Coordenadas.new
+         micoordenada.area($altura, $base)
+         micoordenada.cordIni(@x, @y, @orientacion)
+         micoordenada.variasMovidas(@mov)
+         $coordenadasList.push(micoordenada)
+         erb :game
+     rescue InvalidPosition
+        erb :invalidPosition
+     rescue InvalidMove
+        erb :invalidMove
+    rescue InvalidDimension
+        erb :invalidDimension
+     end
+end
+
+get '/finish' do
+    begin
     rescue InvalidPosition
         erb :invalidPosition
     rescue InvalidMove
         erb :invalidMove
+    erb :position
     end
 end
-

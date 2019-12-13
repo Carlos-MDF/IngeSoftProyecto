@@ -27,14 +27,15 @@ class Coordenadas
         if (b.to_i < 0 || a.to_i < 0)
             raise InvalidDimension.new
         end
-        
+
         @al = a.to_i
         @ba = b.to_i
         @ar = @al * @ba
+        puts @al, @ba, @ar
         return @ar.to_s
     end
-    
-    def cordIni(x, y,o)
+
+    def cordIni(x, y, o)
         if (x.to_i < 0 || y.to_i < 0)
             raise InvalidPosition.new
         end
@@ -47,16 +48,35 @@ class Coordenadas
                 @mirada = i
             end
         end
-       
         return @Xi.to_s , @Yi.to_s, $cardinales[@mirada]
     end
 
-    def estaDentro() 
-        if (@Xf >= 0 && @Xf <= @ba  && @Yf >= 0 && @Yf  <= @al)
-            resp = "Dentro"
-        else
-            resp = "Fuera"
-        end
+    def get_cord_X
+        @Xi.to_s
+    end
+
+    def get_cord_Y
+        @Yi.to_s
+    end
+
+    def get_cord_XF
+        @Xf.to_s
+    end
+
+    def get_cord_YF
+        @Yf.to_s
+    end
+
+    def get_orientacion
+        $cardinales[@mirada]
+    end
+
+    def estaDentro()
+         if (@Xf >= 0 && @Xf <= @ba  && @Yf >= 0 && @Yf  <= @al)
+             resp = "Dentro"
+         else
+             resp = "Fuera"
+         end
         return resp
     end
 
@@ -67,7 +87,7 @@ class Coordenadas
         if ( m == 'D')
             @mirada = @mirada + 1
         end
-        @mirada = limit(@mirada)  
+        @mirada = limit(@mirada)
     end
     def mover (m)
         cambiarOrientacion(m)
@@ -96,7 +116,7 @@ class Coordenadas
             raise InvalidMove.new
            end
         end
-        return resp   
+        return resp
     end
 
 end
